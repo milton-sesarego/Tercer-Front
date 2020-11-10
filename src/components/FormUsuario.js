@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 
 class FormUsuario extends Component {
   constructor(props) {
@@ -9,6 +8,8 @@ class FormUsuario extends Component {
       nombre: "",
       apellido: "",
       nombreUsuario: "",
+      email: "",
+      datos: { edad: "", isMale: "" },
       cancelar: false,
     };
     this.handleChange = this.handleChange.bind(this);
@@ -21,6 +22,11 @@ class FormUsuario extends Component {
       nombre: this.props.usuario ? this.props.usuario.nombre : "",
       apellido: this.props.usuario ? this.props.usuario.apellido : "",
       nombreUsuario: this.props.usuario ? this.props.usuario.nombreUsuario : "",
+      email: this.props.usuario ? this.props.usuario.email : "",
+      datos: {
+        edad: this.props.usuario ? this.props.usuario.datos.edad : "",
+        isMale: this.props.usuario ? this.props.usuario.datos.isMale : "",
+      },
     });
   }
 
@@ -54,6 +60,8 @@ class FormUsuario extends Component {
       nombre: this.state.nombre,
       apellido: this.state.apellido,
       nombreUsuario: this.state.nombreUsuario,
+      email: this.state.email,
+      datos: { edad: this.state.datos.edad, isMale: this.state.datos.isMale },
     };
 
     this.props.crearEditarUsuario(us);
@@ -66,6 +74,9 @@ class FormUsuario extends Component {
       nombre: "",
       apellido: "",
       nombreUsuario: "",
+      email: "",
+      datos: { edad: "", isMale: "" },
+
       cancelar: false,
     });
   }
@@ -106,6 +117,31 @@ class FormUsuario extends Component {
               name="nombreUsuario"
               onChange={this.handleChange}
               value={this.state.nombreUsuario}
+            />
+
+            <label htmlFor="email">Email</label>
+            <input
+              className="form-control"
+              name="email"
+              onChange={this.handleChange}
+              value={this.state.email}
+            />
+
+            <label htmlFor="edad">Edad</label>
+            <input
+              className="form-control"
+              name="edad"
+              onChange={this.handleChange}
+              value={this.state.datos.edad}
+            />
+
+            <label htmlFor="isMale">isMale</label>
+            <input
+              type="checkbox"
+              className="form-control"
+              name="isMale"
+              onChange={this.handleChange}
+              checked={this.state.datos.isMale}
             />
           </div>
           <button type="submit" className="btn btn-success">

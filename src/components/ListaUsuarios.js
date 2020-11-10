@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 
 class ListaUsuarios extends Component {
   constructor(props) {
@@ -12,6 +11,7 @@ class ListaUsuarios extends Component {
 
   seleccionarUsuario(us) {
     this.props.seleccionarUsuario(us);
+    // console.log(us);
   }
 
   render() {
@@ -23,6 +23,9 @@ class ListaUsuarios extends Component {
               <td>Nombre</td>
               <td>Apellido</td>
               <td>Usuario</td>
+              <td>Email</td>
+              <td>Edad</td>
+              <td>isMale</td>
               <td colSpan="2">Acción</td>
             </tr>
           </thead>
@@ -39,6 +42,9 @@ class ListaUsuarios extends Component {
                 <td>{us.nombre}</td>
                 <td>{us.apellido}</td>
                 <td>{us.nombreUsuario}</td>
+                <td>{us.email}</td>
+                <td>{us.datos.edad}</td>
+                <td>{us.datos.isMale.toString()}</td>
                 <td>
                   <button
                     className="btn btn-info"

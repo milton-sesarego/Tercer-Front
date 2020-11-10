@@ -7,8 +7,22 @@ class PanelUsuarios extends Component {
     super(props);
     this.state = {
       usuarios: [
-        { id: 1, nombre: "milton", apellido: "sesarego", nombreUsuario: "mlt" },
-        { id: 2, nombre: "resu", apellido: "user", nombreUsuario: "us" },
+        {
+          id: 1,
+          nombre: "milton",
+          apellido: "sesarego",
+          nombreUsuario: "mlt",
+          email: "asd@qwe",
+          datos: { edad: 27, isMale: true },
+        },
+        {
+          id: 2,
+          nombre: "resu",
+          apellido: "user",
+          nombreUsuario: "us",
+          email: "",
+          datos: { edad: "", isMale: "" },
+        },
       ],
       usuarioSelec: null,
       editando: false,
