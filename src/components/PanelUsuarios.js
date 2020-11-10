@@ -6,24 +6,25 @@ class PanelUsuarios extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      usuarios: [
-        {
-          id: 1,
-          nombre: "milton",
-          apellido: "sesarego",
-          nombreUsuario: "mlt",
-          email: "asd@qwe",
-          datos: { edad: 27, isMale: true },
-        },
-        {
-          id: 2,
-          nombre: "resu",
-          apellido: "user",
-          nombreUsuario: "us",
-          email: "",
-          datos: { edad: "", isMale: "" },
-        },
-      ],
+      // usuarios: [
+      //   {
+      //     id: 1,
+      //     name: "milton",
+      //     surname: "sesarego",
+      //     username: "mlt",
+      //     email: "asd@qwe",
+      //     data: { age: 27, isMale: true },
+      //   },
+      //   {
+      //     id: 2,
+      //     name: "resu",
+      //     surname: "user",
+      //     username: "us",
+      //     email: "",
+      //     data: { age: "", isMale: "" },
+      //   },
+      // ],
+      usuarios: [],
       usuarioSelec: null,
       editando: false,
     };
@@ -34,6 +35,19 @@ class PanelUsuarios extends Component {
     this.formElement = React.createRef();
   }
 
+  componentDidMount() {
+    fetch("http://localhost:3000/api/v1/users/get-all")
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => {
+        console.log(res.data);
+        this.setState({
+          usuarios: res.data,
+        });
+      });
+  }
+
   crearEditarUsuario(us) {
     if (us) {
       var aux = this.state.usuarios.concat();
@@ -41,7 +55,7 @@ class PanelUsuarios extends Component {
         aux.push(us);
       } else {
         aux.forEach((item, index) => {
-          if (item.id === us.id) aux[index] = us;
+          if (item._id === us._id) aux[index] = us;
         });
       }
       this.setState({ usuarios: aux, editando: false });
@@ -58,7 +72,7 @@ class PanelUsuarios extends Component {
 
   eliminarUsuario(usId) {
     var aux = this.state.usuarios.filter(function (obj) {
-      return obj.id !== usId;
+      return obj._id !== usId;
     });
     this.setState({ usuarios: aux, usuarioSelec: null }, () => {
       this.formElement.current.reload();

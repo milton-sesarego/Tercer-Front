@@ -6,7 +6,7 @@ class ListaUsuarios extends Component {
   }
 
   eliminarUsuario(us) {
-    this.props.eliminarUsuario(us.id);
+    this.props.eliminarUsuario(us._id);
   }
 
   seleccionarUsuario(us) {
@@ -32,19 +32,19 @@ class ListaUsuarios extends Component {
           <tbody>
             {this.props.usuarios.map((us) => (
               <tr
-                key={us.id}
+                key={us._id}
                 className={
-                  this.props.usuario && us.id === this.props.usuario.id
+                  this.props.usuario && us._id === this.props.usuario._id
                     ? "rowSelected"
                     : ""
                 }
               >
-                <td>{us.nombre}</td>
-                <td>{us.apellido}</td>
-                <td>{us.nombreUsuario}</td>
+                <td>{us.name}</td>
+                <td>{us.surname}</td>
+                <td>{us.username}</td>
                 <td>{us.email}</td>
-                <td>{us.datos.edad}</td>
-                <td>{us.datos.isMale.toString()}</td>
+                <td>{us.data.age}</td>
+                <td>{us.data.isMale}</td>
                 <td>
                   <button
                     className="btn btn-info"

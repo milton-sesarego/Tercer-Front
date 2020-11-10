@@ -4,12 +4,12 @@ class FormUsuario extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: 0,
-      nombre: "",
-      apellido: "",
-      nombreUsuario: "",
+      _id: 0,
+      name: "",
+      surname: "",
+      username: "",
       email: "",
-      datos: { edad: "", isMale: "" },
+      data: { age: "", isMale: "" },
       cancelar: false,
     };
     this.handleChange = this.handleChange.bind(this);
@@ -18,14 +18,14 @@ class FormUsuario extends Component {
 
   reload() {
     this.setState({
-      id: this.props.usuario ? this.props.usuario.id : 0,
-      nombre: this.props.usuario ? this.props.usuario.nombre : "",
-      apellido: this.props.usuario ? this.props.usuario.apellido : "",
-      nombreUsuario: this.props.usuario ? this.props.usuario.nombreUsuario : "",
+      _id: this.props.usuario ? this.props.usuario.id : 0,
+      name: this.props.usuario ? this.props.usuario.name : "",
+      surname: this.props.usuario ? this.props.usuario.surname : "",
+      username: this.props.usuario ? this.props.usuario.username : "",
       email: this.props.usuario ? this.props.usuario.email : "",
-      datos: {
-        edad: this.props.usuario ? this.props.usuario.datos.edad : "",
-        isMale: this.props.usuario ? this.props.usuario.datos.isMale : "",
+      data: {
+        age: this.props.usuario ? this.props.usuario.data.age : "",
+        isMale: this.props.usuario ? this.props.usuario.data.isMale : "",
       },
     });
   }
@@ -48,20 +48,20 @@ class FormUsuario extends Component {
       return;
     }
     if (
-      this.state.nombre.length === 0 ||
-      this.state.apellido.length === 0 ||
-      this.state.nombreUsuario.length === 0
+      this.state.name.length === 0 ||
+      this.state.surname.length === 0 ||
+      this.state.username.length === 0
     ) {
       return;
     }
 
     const us = {
-      id: this.state.id,
-      nombre: this.state.nombre,
-      apellido: this.state.apellido,
-      nombreUsuario: this.state.nombreUsuario,
+      _id: this.state.id,
+      name: this.state.name,
+      surname: this.state.surname,
+      username: this.state.username,
       email: this.state.email,
-      datos: { edad: this.state.datos.edad, isMale: this.state.datos.isMale },
+      data: { age: this.state.data.age, isMale: this.state.data.isMale },
     };
 
     this.props.crearEditarUsuario(us);
@@ -70,12 +70,12 @@ class FormUsuario extends Component {
 
   clearForm() {
     this.setState({
-      id: 0,
-      nombre: "",
-      apellido: "",
-      nombreUsuario: "",
+      _id: 0,
+      name: "",
+      surname: "",
+      username: "",
       email: "",
-      datos: { edad: "", isMale: "" },
+      data: { age: "", isMale: "" },
 
       cancelar: false,
     });
@@ -95,28 +95,28 @@ class FormUsuario extends Component {
 
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <label htmlFor="nombre">Nombre</label>
+            <label htmlFor="name">Nombre</label>
             <input
               className="form-control"
-              name="nombre"
+              name="name"
               onChange={this.handleChange}
-              value={this.state.nombre}
+              value={this.state.name}
             />
 
-            <label htmlFor="apellido">Apellido</label>
+            <label htmlFor="surname">Apellido</label>
             <input
               className="form-control"
-              name="apellido"
+              name="surname"
               onChange={this.handleChange}
-              value={this.state.apellido}
+              value={this.state.surname}
             />
 
-            <label htmlFor="nombreUsuario">Usuario</label>
+            <label htmlFor="username">Usuario</label>
             <input
               className="form-control"
-              name="nombreUsuario"
+              name="username"
               onChange={this.handleChange}
-              value={this.state.nombreUsuario}
+              value={this.state.username}
             />
 
             <label htmlFor="email">Email</label>
@@ -127,12 +127,12 @@ class FormUsuario extends Component {
               value={this.state.email}
             />
 
-            <label htmlFor="edad">Edad</label>
+            <label htmlFor="age">age</label>
             <input
               className="form-control"
-              name="edad"
+              name="age"
               onChange={this.handleChange}
-              value={this.state.datos.edad}
+              value={this.state.data.age}
             />
 
             <label htmlFor="isMale">isMale</label>
@@ -141,7 +141,7 @@ class FormUsuario extends Component {
               className="form-control"
               name="isMale"
               onChange={this.handleChange}
-              checked={this.state.datos.isMale}
+              checked={this.state.data.isMale}
             />
           </div>
           <button type="submit" className="btn btn-success">
