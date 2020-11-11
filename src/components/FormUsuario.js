@@ -86,12 +86,10 @@ class FormUsuario extends Component {
       <div
         className={
           (this.props.editando ? "form-usuario-selected" : "form-usuario") +
-          " mt-3 mb-3"
+          " mb-3"
         }
       >
-        <h4>
-          {this.props.editando ? "Modificación de Usuario" : "Alta de Usuario"}
-        </h4>
+        <h4>{this.props.editando ? "Modificación" : "Alta Usuario"}</h4>
 
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">

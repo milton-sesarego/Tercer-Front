@@ -16,7 +16,7 @@ class ListaUsuarios extends Component {
 
   render() {
     return (
-      <div className="mb-3">
+      <div className="grilla-datos mb-3">
         <table>
           <thead>
             <tr>

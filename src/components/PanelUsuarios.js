@@ -82,20 +82,26 @@ class PanelUsuarios extends Component {
   render() {
     return (
       <div>
-        <FormUsuario
-          usuario={this.state.usuarioSelec}
-          editando={this.state.editando}
-          crearEditarUsuario={this.crearEditarUsuario}
-          ref={this.formElement}
-        />
-
-        <ListaUsuarios
-          usuarios={this.state.usuarios}
-          usuario={this.state.usuarioSelec}
-          editando={this.state.editando}
-          eliminarUsuario={this.eliminarUsuario}
-          seleccionarUsuario={this.seleccionarUsuario}
-        />
+        <div className="row ">
+          {/* justify-content-md-center */}
+          <div className="col col-sm-6 col-md-4">
+            <FormUsuario
+              usuario={this.state.usuarioSelec}
+              editando={this.state.editando}
+              crearEditarUsuario={this.crearEditarUsuario}
+              ref={this.formElement}
+            />
+          </div>
+          <div className="col col-sm-6 col-md-8">
+            <ListaUsuarios
+              usuarios={this.state.usuarios}
+              usuario={this.state.usuarioSelec}
+              editando={this.state.editando}
+              eliminarUsuario={this.eliminarUsuario}
+              seleccionarUsuario={this.seleccionarUsuario}
+            />
+          </div>
+        </div>
       </div>
     );
   }

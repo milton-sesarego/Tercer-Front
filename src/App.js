@@ -7,9 +7,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header container">
+        <header className="App-header">
           {/* <img src={logo} className="App-logo" alt="logo" /> */}
-          <h3>Panel de control de Usuarios</h3>
+          <h3 className="header-title">Panel de control de Usuarios</h3>
           <PanelUsuarios />
         </header>
       </div>
